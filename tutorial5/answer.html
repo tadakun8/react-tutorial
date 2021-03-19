@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚛️ React ToDo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css" />
+  <style>
+    .container { margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.6/index.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    const options = [
+      { value: 'js', label: 'JavaScript' },
+      { value: 'py', label: 'Python' },
+      { value: 'rb', label: 'Ruby' },
+      { value: '', label: 'その他' },
+    ];
+
+    function App() {
+      /* ??? */
+      const [value, setValue] = React.useState()
+      const [label, setLabel] = React.useState()
+
+      const getAnswer = () => {
+        /* ??? */
+        // その他が選択されている場合は、自由記入欄の入力値を返す
+        // それ以外の場合は、options 配列の該当する要素の label を返す
+      };
+
+      const handleChange = event =>{
+        setValue(e.target.value)
+      }
+
+
+      return (
+        <>
+          {options.map(option => (
+            <label key={option.label}>
+              <input
+                type="radio"
+                value={ option.value }
+                onChange={ handleChange() }
+                checked={ value === option.value }
+              />
+            </label>
+          ))}
+          <br/>
+          回答 : { label }
+        </>
+      );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚛️ React ToDo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.min.css" />
+  <style>
+    .container { margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.6/index.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Section({ id, title, children }) {
+      return (
+        <section id={id} className='box'>
+          <h1 class="title">{title}</h1>
+          {children}
+        </section>
+      )
+    }
+    function DefinitionList({ items }) {
+      return (
+        <dl className="definition">
+          { items.map(item => (
+              <React.Fragment key={item.title}>
+                <dt class="definition-title">{item.title}</dt>
+                <dd class="definition-content">{item.content}</dd>
+              </React.Fragment>
+            ))
+          }
+        </dl>
+      )
+    }
+    const app = (
+      <>
+        <Section id="react" title="React">
+          <DefinitionList
+            items={[
+              { title: 'Initial release', content: '2013/5' },
+              { title: 'Github stars', content: '147,940' }
+            ]}
+          />
+        </Section>
+        <Section id="vue" title="Vue.js">
+          <DefinitionList
+            items={[
+              { title: 'Initial release', content: '2014/2' },
+              { title: 'Github stars', content: '163,165' }
+            ]}
+          />
+        </Section>
+        <Section id="angular" title="Angular">
+          <DefinitionList
+            items={[
+              { title: 'Initial release', content: '2016/9' },
+              { title: 'Github stars', content: '60,571' }
+            ]}
+          />
+        </Section>
+      </>
+    );
+    const root = document.getElementById('root');
+    ReactDOM.render(app, root);
+  </script>
+</body>
+</html>
